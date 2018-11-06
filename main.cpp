@@ -92,7 +92,7 @@ while (1){
             //                            pc.printf("s1z=%.2f v1=%.2f a1=%.2f a2=%.2f\n", s3/100, v3/100, az/100, c1/100); }
             //apabila bacaan sumbu y di sekitar 9,8 (gravitasi)
             else {                                                          
-                pc.printf ("robot masih diem pak, bacaan masih 0");
+                pc.printf ("robot masih diem pak !!!, bacaan masih 0");
                 pc.printf ("koordinat robot saat ini :");
                 }
         if (millis()- millisx > TS){
