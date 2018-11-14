@@ -52,10 +52,10 @@ float s1, s2, s3;
 while (1){   
     while (a==0){
         cmps.getData(data);
-        float a1 = ((int)data[12] << 8 | (int)data[11]);
-        float b1 = ((int)data[14] << 8 | (int)data[13]);
+        float a1 = ((int)data[12] >> 8 | (int)data[11]);
+        float b1 = ((int)data[14] >> 8 | (int)data[13]);
         Thread::wait(1000); // delay 1s
-        if (((b1 > 1000) || (b1 < 700))&&((a1 < 50000)||(a1>80000))){ 
+        if (a1 < 30){ 
         a = 1;
     }
         
@@ -63,14 +63,14 @@ while (1){
     while(a==1){
             // baca data percepatan melalui compass
             cmps.getData(data);
-                float a1 = ((int)data[12] << 8 | (int)data[11]);
-                float b1 = ((int)data[14] << 8 | (int)data[13]);
-                float c1 = ((int)data[16] << 8 | (int)data[15]);
+                float a1 = ((int)data[12] >> 8 | (int)data[11]);
+                float b1 = ((int)data[14] >> 8 | (int)data[13]);
+                float c1 = ((int)data[16] >> 8 | (int)data[15]);
                 Thread::wait(1000); // delay 1s 
                 
             //conditional, apabila bacaan sumbu y diatas 10 m/s^2 atau bacaan dibawah 7 m/s^2
             //              maka menandakan robot sedang mulai berjalan dan mulai perhitungan koordinat
-            if ((b1 > 1000) || (b1 < 700)){
+            if (a1 < 30){
                  v1 = ((a1+ax)/4);         //metode integral trapesium dengan t = 0,5 s
                  ax = a1;
                  v2 = ((b1+ay)/4);
